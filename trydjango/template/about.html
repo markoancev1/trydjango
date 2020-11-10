@@ -8,6 +8,17 @@
 {% block content %}
 <h1>About</h1>
 <p>This is a template</p>
-{% endblock %}
+
+<p>
+    {{ my_text }}, {{ my_number }}
+</p>
+
+<ul>
+    {% for my_sub_item in my_list %}
+        <li>{{ forloop.counter }} - {{ my_sub_item }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
 </body>
 </html>

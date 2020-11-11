@@ -13,3 +13,11 @@ class ProductForm(forms.ModelForm):
             'summary',
             'featured'
         ]
+
+
+class RawProductForm(forms.Form):
+    title = forms.CharField()
+    description = forms.CharField()
+    price = forms.DecimalField()
+    summary = forms.CharField()
+    featured = forms.BooleanField()

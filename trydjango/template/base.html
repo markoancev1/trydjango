@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>First Django Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
 <h1> First Django Project</h1>
 
 {% block content %}
- replace me
+ <a class="float-right btn btn-primary" href="{% url 'albums:album_list' %}">C
 {% endblock %}
 </body>
 </html>

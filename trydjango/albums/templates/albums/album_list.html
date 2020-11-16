@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+        <p class="mt-5">
+                <a class="float-right btn btn-primary" href="{% url 'albums:album_create' %}"><i class="fas fa-plus-circle"></i>Create New Album</a>
+        </p>
+
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                     <th>Count</th>
+                     <th>Album Name</th>
+                     <th>Singer</th>
+                     <th>Date</th>
+                </tr>
+            </thead>
+                  {% for instance in object_list %}
+                       <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{instance.album_name}}</td>
+                            <td>{{instance.singer}}</td>
+                            <td>{{instance.date}}</td>
+                       </tr>
+                  {% endfor %}
+        </table>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+        <p class="mt-5">
+                <a class="float-right btn btn-primary" href="{% url 'singers:singer_create' %}"><i class="fas fa-plus-circle"></i>Create New Singer</a>
+        </p>
+
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                     <th>Count</th>
+                     <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>Group Name</th>
+                     <th>Age</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+                  {% for instance in object_list %}
+                       <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{instance.first_name}}</td>
+                            <td>{{instance.last_name}}</td>
+                            <td>{{instance.group_name}}</td>
+                            <td>{{instance.age}}</td>
+                           <td>{{instance.date}}</td>
+                       </tr>
+                  {% endfor %}
+        </table>
+</div>
+{% endblock %}
+
+</body>
+</html>
+
+</body>
+</html>

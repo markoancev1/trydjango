@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 
 from .models import Album
 
 from .forms import AlbumForm
+
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -26,3 +28,7 @@ def album_list_view(request):
     return render(request, "albums/album_list.html", context)
 
 
+def album_delete_view(request, id):
+    obj = Album.objects.filter(id=id)
+    obj.delete()
+    return redirect('/albums/')

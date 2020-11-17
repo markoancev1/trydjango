@@ -21,6 +21,7 @@
                      <th>Album Name</th>
                      <th>Singer</th>
                      <th>Date</th>
+                     <th>Action</th>
                 </tr>
             </thead>
                   {% for instance in object_list %}
@@ -29,6 +30,7 @@
                             <td>{{instance.album_name}}</td>
                             <td>{{instance.singer}}</td>
                             <td>{{instance.date}}</td>
+                            <td> <a class="btn btn-danger" href="{% url 'albums:album_delete' id=instance.id %}"> Delete</a></td>
                        </tr>
                   {% endfor %}
         </table>

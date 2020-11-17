@@ -31,6 +31,7 @@
                      <th>Group Name</th>
                      <th>Age</th>
                     <th>Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
                   {% for instance in object_list %}
@@ -41,6 +42,7 @@
                             <td>{{instance.group_name}}</td>
                             <td>{{instance.age}}</td>
                            <td>{{instance.date}}</td>
+                           <td> <a class="btn btn-danger" href="{% url 'singers:singer_delete' id=instance.id %}"> Delete</a></td>
                        </tr>
                   {% endfor %}
         </table>

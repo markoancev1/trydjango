@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import SingerForm
 
@@ -24,3 +24,9 @@ def singer_list_view(request):
         "object_list": queryset
     }
     return render(request, "singers/singer_list.html", context)
+
+
+def singer_delete_view(request, id):
+    obj = Singer.objects.filter(id=id)
+    obj.delete()
+    return redirect('/singers/')

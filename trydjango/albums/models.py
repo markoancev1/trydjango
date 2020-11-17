@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from datetime import datetime
 # Create your models here.
 
@@ -12,4 +13,6 @@ class Album(models.Model):
     def __str__(self):
         return self.singer
 
+    def get_absolute_url(self):
+        return reverse("albums:album-list", kwargs={"id": self.id})
 

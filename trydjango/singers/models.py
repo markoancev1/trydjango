@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
 # Create your models here.
@@ -22,6 +23,8 @@ class Singer(models.Model):
     age = models.IntegerField(blank=False, validators=[validate_age])
     date = models.DateTimeField(default=datetime.now)
 
-
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+    def get_absolute_url(self):
+        return reverse("singers:singer-list", kwargs={"id": self.id})

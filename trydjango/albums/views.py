@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Album
 
@@ -31,4 +31,16 @@ def album_list_view(request):
 def album_delete_view(request, id):
     obj = Album.objects.filter(id=id)
     obj.delete()
-    return redirect('/albums/')
+    if obj is not None:
+        return redirect('/albums/')
+
+
+def album_update_view(request, id=id):
+    obj = get_object_or_404(Album, id=id)
+    form = AlbumForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(request, "albums/album_update.html", context)

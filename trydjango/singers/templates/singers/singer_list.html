@@ -42,7 +42,10 @@
                             <td>{{instance.group_name}}</td>
                             <td>{{instance.age}}</td>
                            <td>{{instance.date}}</td>
-                           <td> <a class="btn btn-danger" href="{% url 'singers:singer_delete' id=instance.id %}"> Delete</a></td>
+                           <td>
+                               <a class="btn btn-secondary" href="{% url 'singers:update' id=instance.id %}"> Update</a>
+                               <a class="btn btn-danger" href="{% url 'singers:singer_delete' id=instance.id %}"> Delete</a>
+                           </td>
                        </tr>
                   {% endfor %}
         </table>

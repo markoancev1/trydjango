@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import SingerForm
 
@@ -29,4 +29,16 @@ def singer_list_view(request):
 def singer_delete_view(request, id):
     obj = Singer.objects.filter(id=id)
     obj.delete()
-    return redirect('/singers/')
+    if obj is not None:
+        return redirect('/singers/')
+
+
+def singer_update_view(request, id=id):
+    obj = get_object_or_404(Singer, id=id)
+    form = SingerForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(request, "singers/singer_update.html", context)
